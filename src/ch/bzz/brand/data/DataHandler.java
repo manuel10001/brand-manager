@@ -98,7 +98,7 @@ public class DataHandler {
                 designer = new Designer();
                 String[] values = line.split(";");
 
-                designer.setDesignerUUID(values[0]);
+                designer.setDesignerID(values[0]);
                 designer.setDesigner(values[1]);
 
                 designerMap.put(values[0], designer);
@@ -138,7 +138,7 @@ public class DataHandler {
                         clothing.getUUID(),
                         clothing.getName(),
                         clothing.getColor(),
-                        clothing.getDesigner().getDesignerUUID(),
+                        clothing.getDesigner().getDesignerID(),
                         clothing.getPrice().toString()
                 );
                 writer.write(contents + '\n');

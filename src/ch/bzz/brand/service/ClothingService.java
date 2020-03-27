@@ -33,11 +33,11 @@ public class ClothingService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readClothing(
-            @QueryParam("clothingId") String clothingId
+            @QueryParam("clothingUUID") String clothingUUID
     ) {
         int httpStatus;
 
-        Clothing clothing = new Brand().getClothingById(clothingId);
+        Clothing clothing = new Brand().getClothingByUUID(clothingUUID);
         if (clothing != null) {
             httpStatus = 200;
         } else {
@@ -51,13 +51,14 @@ public class ClothingService {
     }
 
 
+    @SuppressWarnings("Duplicates")
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response createClothing(
             @FormParam("name") String name,
             @FormParam("color") String color,
-            @FormParam("designerUUID") String designerUUID,
+            @FormParam("designerID") String designerID,
             @FormParam("price") BigDecimal price
     ) {
         int httpStatus = 200;
@@ -68,73 +69,114 @@ public class ClothingService {
         clothing.setColor(color);
         clothing.setPrice(price);
 
-        Designer designer = DataHandler.getDesignerMap().get(designerUUID);
-        clothing.setDesigner(designer);
+        if (DataHandler.getDesignerMap().containsKey(designerID)) {
+            Designer designer = DataHandler.getDesignerMap().get(designerID);
+            clothing.setDesigner(designer);
 
-        Brand brand = new Brand();
-        brand.getClothingMap().put(clothing.getUUID(), clothing);
+            Brand brand = new Brand();
+            brand.getClothingMap().put(clothing.getUUID(), clothing);
 
-        DataHandler.writeClothes(brand.getClothingMap());
+            DataHandler.writeClothes(brand.getClothingMap());
 
+        } else {
+            httpStatus = 400;
+        }
+
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+
+
+    @SuppressWarnings("Duplicates")
+    @PUT
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response updateClothing(
+            @FormParam("uuid") String clothingUUID,
+            @FormParam("name") String name,
+            @FormParam("color") String color,
+            @FormParam("designerID") String designerID,
+            @FormParam("price") BigDecimal price
+    ) {
+        int httpStatus = 200;
+
+        Clothing clothing;
+        if (DataHandler.getClothingMap().containsKey(clothingUUID)) {
+            clothing = new Brand().getClothingByUUID(clothingUUID);
+            clothing.setName(name);
+            clothing.setColor(color);
+            clothing.setPrice(price);
+
+            if (DataHandler.getDesignerMap().containsKey(designerID)) {
+                Designer designer = DataHandler.getDesignerMap().get(designerID);
+                clothing.setDesigner(designer);
+
+                Brand brand = new Brand();
+                brand.getClothingMap().put(clothing.getUUID(), clothing);
+
+                DataHandler.writeClothes(brand.getClothingMap());
+
+            } else {
+                httpStatus = 400;
+            }
+
+            httpStatus = 200;
+        } else {
+            httpStatus = 404;
+        }
+
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+
+
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deleteClothing(
+            @QueryParam("uuid") String clothingUUID
+    ) {
+        int httpStatus;
+        try {
+            UUID.fromString(clothingUUID);
+            Brand brand = new Brand();
+            Clothing clothing = brand.getClothingByUUID(clothingUUID);
+            if (clothing != null) {
+                httpStatus = 200;
+                brand.getClothingMap().remove(clothing);
+                DataHandler.writeClothes(brand.getClothingMap());
+            } else {
+                httpStatus = 404;
+            }
+        } catch (IllegalArgumentException argEx) {
+            httpStatus = 400;
+        }
 
         Response response = Response
                 .status(httpStatus)
                 .entity("")
                 .build();
         return response;
-    }
 
-
-//    @PUT
-//    @Path("update")
-//    @Produces(MediaType.TEXT_PLAIN)
-//    public Response updateBook(
-//            @Valid @BeanParam Book book,
-//            @FormParam("publisherUUID") String publisherUUID
-//    ) {
-//        int httpStatus = 200;
-//
-//        Bookshelf bookshelf = new Bookshelf();
-//        if (bookshelf.getBookMap().containsKey(book.getBookUUID())) {
-//            Publisher publisher = DataHandler.getPublisherMap().get(publisherUUID);
-//            book.setPublisher(publisher);
-//            bookshelf.getBookMap().put(book.getBookUUID(), book);
-//            DataHandler.writeBooks(bookshelf.getBookMap());
-//        } else {
-//            httpStatus = 404;
-//        }
-//
-//        Response response = Response
-//                .status(httpStatus)
-//                .entity("")
-//                .build();
-//        return response;
-//    }
-//
-//
-//    @DELETE
-//    @Path("delete")
-//    @Produces(MediaType.TEXT_PLAIN)
-//    public Response deleteBook(
-//            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-//            @QueryParam("uuid") String bookUUID
-//    ) {
 //        int httpStatus;
 //
-//        Bookshelf bookshelf = new Bookshelf();
-//        Book book = bookshelf.getBookByUUID(bookUUID);
-//        if (book != null) {
+//        Brand brand = new Brand();
+//        Clothing clothing = brand.getClothingByUUID(clothingUUID);
+//        if (clothing != null) {
 //            httpStatus = 200;
-//            bookshelf.getBookMap().remove(book);
-//            DataHandler.writeBooks(bookshelf.getBookMap());
+//            brand.getClothingMap().remove(clothing);
+//            DataHandler.writeClothes(brand.getClothingMap());
 //        } else {
 //            httpStatus = 404;
 //        }
 //
-//        Response response = Response
+//        return Response
 //                .status(httpStatus)
 //                .entity("")
 //                .build();
-//        return response;
-//    }
+    }
 }

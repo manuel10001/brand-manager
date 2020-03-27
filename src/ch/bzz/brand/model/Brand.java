@@ -11,9 +11,9 @@ public class Brand {
         clothingMap = DataHandler.getClothingMap();
     }
 
-    public Clothing getClothingById(String clothingId) {
-        if (getClothingMap().containsKey(clothingId)) {
-            return getClothingMap().get(clothingId);
+    public Clothing getClothingByUUID(String clothingUUID) {
+        if (getClothingMap().containsKey(clothingUUID)) {
+            return getClothingMap().get(clothingUUID);
         }
         return null;
     }
