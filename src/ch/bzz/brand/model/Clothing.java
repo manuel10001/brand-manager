@@ -3,7 +3,7 @@ package ch.bzz.brand.model;
 import java.math.BigDecimal;
 
 public class Clothing {
-    private String id;
+    private String UUID;
     private String name;
     private String color;
     private Designer designer;
@@ -17,12 +17,12 @@ public class Clothing {
         this.color = color;
     }
 
-    public String getId() {
-        return id;
+    public String getUUID() {
+        return UUID;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUUID(String UUID) {
+        this.UUID = UUID;
     }
 
     public String getName() {
