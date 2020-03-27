@@ -3,17 +3,26 @@ package ch.bzz.brand.model;
 import java.math.BigDecimal;
 
 public class Clothing {
-    private String clothingUUID;
+    private String id;
     private String name;
+    private String color;
     private Designer designer;
     private BigDecimal price;
 
-    public String getClothingUUID() {
-        return clothingUUID;
+    public String getColor() {
+        return color;
     }
 
-    public void setClothingUUID(String clothingUUID) {
-        this.clothingUUID = clothingUUID;
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
