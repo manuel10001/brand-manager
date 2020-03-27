@@ -3,7 +3,6 @@ package ch.bzz.brand.data;
 import ch.bzz.brand.model.Clothing;
 import ch.bzz.brand.model.Designer;
 import ch.bzz.brand.service.Config;
-import sun.security.krb5.internal.crypto.Des;
 
 import java.io.*;
 import java.math.BigDecimal;
