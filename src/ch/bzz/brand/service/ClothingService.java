@@ -142,12 +142,11 @@ public class ClothingService {
     ) {
         int httpStatus;
         try {
-            UUID.fromString(clothingUUID);
             Brand brand = new Brand();
             Clothing clothing = brand.getClothingByUUID(clothingUUID);
             if (clothing != null) {
                 httpStatus = 200;
-                brand.getClothingMap().remove(clothing);
+                brand.getClothingMap().remove(clothingUUID);
                 DataHandler.writeClothes(brand.getClothingMap());
             } else {
                 httpStatus = 404;
@@ -161,22 +160,5 @@ public class ClothingService {
                 .entity("")
                 .build();
         return response;
-
-//        int httpStatus;
-//
-//        Brand brand = new Brand();
-//        Clothing clothing = brand.getClothingByUUID(clothingUUID);
-//        if (clothing != null) {
-//            httpStatus = 200;
-//            brand.getClothingMap().remove(clothing);
-//            DataHandler.writeClothes(brand.getClothingMap());
-//        } else {
-//            httpStatus = 404;
-//        }
-//
-//        return Response
-//                .status(httpStatus)
-//                .entity("")
-//                .build();
     }
 }
