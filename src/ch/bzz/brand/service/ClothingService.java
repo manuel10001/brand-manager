@@ -5,11 +5,11 @@ import ch.bzz.brand.model.Brand;
 import ch.bzz.brand.model.Clothing;
 import ch.bzz.brand.model.Designer;
 
-
+import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.math.BigDecimal;
 import java.util.Map;
 import java.util.UUID;
 
@@ -33,7 +33,8 @@ public class ClothingService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readClothing(
-            @QueryParam("clothingUUID") String clothingUUID
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @QueryParam("uuid") String clothingUUID
     ) {
         int httpStatus;
 
@@ -56,21 +57,16 @@ public class ClothingService {
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response createClothing(
-            @FormParam("name") String name,
-            @FormParam("color") String color,
-            @FormParam("designerID") String designerID,
-            @FormParam("price") BigDecimal price
+            @Valid @BeanParam Clothing clothing,
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @FormParam("designerUUID") String designerUUID
     ) {
         int httpStatus = 200;
 
-        Clothing clothing = new Clothing();
         clothing.setUUID(UUID.randomUUID().toString());
-        clothing.setName(name);
-        clothing.setColor(color);
-        clothing.setPrice(price);
 
-        if (DataHandler.getDesignerMap().containsKey(designerID)) {
-            Designer designer = DataHandler.getDesignerMap().get(designerID);
+        if (DataHandler.getDesignerMap().containsKey(designerUUID)) {
+            Designer designer = DataHandler.getDesignerMap().get(designerUUID);
             clothing.setDesigner(designer);
 
             Brand brand = new Brand();
@@ -94,23 +90,19 @@ public class ClothingService {
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateClothing(
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @FormParam("uuid") String clothingUUID,
-            @FormParam("name") String name,
-            @FormParam("color") String color,
-            @FormParam("designerID") String designerID,
-            @FormParam("price") BigDecimal price
+            @Valid @BeanParam Clothing clothing,
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @FormParam("designerUUID") String designerUUID
     ) {
         int httpStatus = 200;
 
-        Clothing clothing;
         if (DataHandler.getClothingMap().containsKey(clothingUUID)) {
             clothing = new Brand().getClothingByUUID(clothingUUID);
-            clothing.setName(name);
-            clothing.setColor(color);
-            clothing.setPrice(price);
 
-            if (DataHandler.getDesignerMap().containsKey(designerID)) {
-                Designer designer = DataHandler.getDesignerMap().get(designerID);
+            if (DataHandler.getDesignerMap().containsKey(designerUUID)) {
+                Designer designer = DataHandler.getDesignerMap().get(designerUUID);
                 clothing.setDesigner(designer);
 
                 Brand brand = new Brand();
@@ -138,6 +130,7 @@ public class ClothingService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteClothing(
+            @Pattern(regexp = "[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String clothingUUID
     ) {
         int httpStatus;

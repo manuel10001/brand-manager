@@ -2,14 +2,14 @@ package ch.bzz.brand.model;
 
 public class Designer {
     private String designer;
-    private String designerID;
+    private String designerUUID;
 
-    public String getDesignerID() {
-        return designerID;
+    public String getDesignerUUID() {
+        return designerUUID;
     }
 
-    public void setDesignerID(String designerID) {
-        this.designerID = designerID;
+    public void setDesignerUUID(String designerUUID) {
+        this.designerUUID = designerUUID;
     }
 
     public String getDesigner() {
