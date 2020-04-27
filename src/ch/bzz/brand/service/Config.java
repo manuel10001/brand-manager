@@ -13,14 +13,13 @@ import java.util.Set;
 @ApplicationPath("/resource")
 
 public class Config extends Application {
-    private static final String PROPERTIES_PATH = "/home/bzz/webapp/brand.properties";
+    private static final String PROPERTIES_PATH = "/home/bzz/IdeaProjects/brand-manager/testing/brand.properties";
     private static Properties properties = null;
 
 
     @Override
     public Set<Class<?>> getClasses() {
         HashSet providers = new HashSet<Class<?>>();
-        providers.add(TestService.class);
         providers.add(ClothingService.class);
         return providers;
     }

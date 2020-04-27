@@ -3,6 +3,7 @@ package ch.bzz.brand.data;
 import ch.bzz.brand.model.Clothing;
 import ch.bzz.brand.model.Designer;
 import ch.bzz.brand.service.Config;
+import sun.security.krb5.internal.crypto.Des;
 
 import java.io.*;
 import java.math.BigDecimal;
@@ -127,8 +128,8 @@ public class DataHandler {
         FileOutputStream fileOutputStream = null;
 
         try {
-            String bookPath = Config.getProperty("clothingFile");
-            fileOutputStream = new FileOutputStream(bookPath);
+            String clothingPath = Config.getProperty("clothingFile");
+            fileOutputStream = new FileOutputStream(clothingPath);
             writer = new BufferedWriter(new OutputStreamWriter(fileOutputStream, "utf-8"));
 
             for (Map.Entry<String, Clothing> clothingEntry : clothingMap.entrySet()) {
@@ -140,6 +141,46 @@ public class DataHandler {
                         clothing.getColor(),
                         clothing.getDesigner().getDesignerUUID(),
                         clothing.getPrice().toString()
+                );
+                writer.write(contents + '\n');
+            }
+        } catch (IOException ioEx) {
+            ioEx.printStackTrace();
+            throw new RuntimeException();
+
+        } finally {
+
+            try {
+                if (writer != null) {
+                    writer.close();
+                }
+
+                if (fileOutputStream != null) {
+                    fileOutputStream.close();
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+
+    @SuppressWarnings("Duplicates")
+    public static void writeDesigners(Map<String, Designer> designerMap) {
+        Writer writer = null;
+        FileOutputStream fileOutputStream = null;
+
+        try {
+            String designerPath = Config.getProperty("designerFile");
+            fileOutputStream = new FileOutputStream(designerPath);
+            writer = new BufferedWriter(new OutputStreamWriter(fileOutputStream, "utf-8"));
+
+            for (Map.Entry<String, Designer> designerEntry : designerMap.entrySet()) {
+                Designer designer = designerEntry.getValue();
+                String contents = String.join(";",
+
+                        designer.getDesignerUUID(),
+                        designer.getDesigner()
                 );
                 writer.write(contents + '\n');
             }
