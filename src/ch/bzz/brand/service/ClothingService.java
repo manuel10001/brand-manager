@@ -99,7 +99,7 @@ public class ClothingService {
         int httpStatus = 200;
 
         if (DataHandler.getClothingMap().containsKey(clothingUUID)) {
-            clothing = new Brand().getClothingByUUID(clothingUUID);
+            clothing.setUUID(clothingUUID);
 
             if (DataHandler.getDesignerMap().containsKey(designerUUID)) {
                 Designer designer = DataHandler.getDesignerMap().get(designerUUID);

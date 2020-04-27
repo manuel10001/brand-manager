@@ -1,0 +1,590 @@
+{
+	"id": "4492e1c7-efb8-4c2b-8612-a24c99c5fcbe",
+	"name": "Brand_test",
+	"timestamp": "2020-04-27T14:23:12.660Z",
+	"collection_id": "d0efce7a-b615-4a6f-adbb-0f068feb7355",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "b59eea92-4141-42c1-a0ff-df0cf2330aff",
+			"name": "1.1 Clothing liste anzeigen",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/list",
+			"time": 688,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				688
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "4cbe1df5-fea5-4b71-85c8-0d1150e3cac9",
+			"name": "1.2 Ein Clothing lesen",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/read?uuid=b694ac5f-06ef-48ba-8b5f-a3249cf46d5c",
+			"time": 30,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				30
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "8310df65-8b28-4f10-8844-1f106fabd814",
+			"name": "1.3 Ein Clothing erstellen",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/create",
+			"time": 210,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				210
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "8aecf89d-16e4-4928-b3c5-e1c9bcbd5ef7",
+			"name": "1.4 Ein Clothing ändern",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/update",
+			"time": 13,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				13
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "fdb37341-35fb-4905-8e8f-13433a1a8938",
+			"name": "1.5 Ein Clothing löschen",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/delete?uuid=02beace0-3e33-4fbe-a5c3-db3f62a6a0fb",
+			"time": 11,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				11
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "3b67b83c-41e1-47a2-b757-c085d0b2091c",
+			"name": "2.1 Unbekanntes Clothing lesen",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/read?clothingUUID=1aceea33-b5c3-4185-ba51-0ca48defdf05",
+			"time": 25,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				25
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e659558a-b59c-4a52-a763-ec0f20198282",
+			"name": "2.2 Unbekannte designerUUID",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/create",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				9
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "28af5de9-1d1a-4c77-8352-314c0f142fb0",
+			"name": "2.3 Unbekannte clothingUUID ändern",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/update",
+			"time": 14,
+			"responseCode": {
+				"code": 405,
+				"name": "Method Not Allowed"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				14
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2c72ff4a-f973-418d-8126-6a16d1df55f9",
+			"name": "3.1 Clothing erstellen, Titel zu kurz",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/create",
+			"time": 109,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				109
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "44ee9674-c096-4d53-b571-ec5a626c9bb9",
+			"name": "3.2 Clothing erstellen, Titel zu lang",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/create",
+			"time": 18,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				18
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "dffec12a-6797-4afb-be5d-7baad1bfa490",
+			"name": "3.3 Clothing erstellen, color zu kurz",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/create",
+			"time": 18,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				18
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "0a93afbf-9225-46aa-8279-90dd30758f2d",
+			"name": "3.4 Clothing erstellen, color zu lang",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/create",
+			"time": 21,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				21
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "263e4b7d-15bd-413d-8105-75a66a107d1a",
+			"name": "3.5 Clothing erstellen, preis zu klein",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/create",
+			"time": 42,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				42
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "59f2f45a-c365-4100-bcb5-629cf4fa0204",
+			"name": "3.6 Clothing erstellen, preis zu gross",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/create",
+			"time": 49,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				49
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "33f1d0f5-8894-4fce-8588-658190fc4bc5",
+			"name": "3.7 Clothing erstellen, preis formal falsch",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/create",
+			"time": 29,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				29
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e3f7522f-27b9-44aa-ae87-0b80d2226cb5",
+			"name": "3.8 Clothing erstellen, designerUUID formal falsch",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/create",
+			"time": 25,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				25
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "4c2923d0-a8c6-4eef-84c3-f1108330d98c",
+			"name": "3.9 Clothing ändern, name zu kurz",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/update",
+			"time": 81,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				81
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e7fa0928-4144-4303-a8e5-2b0e3a2b3e45",
+			"name": "3.10 Clothing ändern, name zu lang",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/update",
+			"time": 18,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				18
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2709e053-8019-4257-8089-28c77970b1a5",
+			"name": "3.11 Clothing ändern, color zu lang",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/update",
+			"time": 14,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				14
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "acf72722-0a2a-4a18-adda-852b46166fe0",
+			"name": "3.12 Clothing ändern, color zu kurz",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/update",
+			"time": 21,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				21
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e80d2290-61ad-4842-94c6-18face63d10e",
+			"name": "3.13 Clothing ändern, preis zu klein",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/update",
+			"time": 19,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				19
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "1428a1d9-d3d0-4a75-9e9b-e61e2702cd2a",
+			"name": "3.14 Clothing ändern, preis zu gross",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/update",
+			"time": 22,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				22
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "71a9804b-da4e-48df-9a1a-aa86aef3e756",
+			"name": "3.15 Clothing ändern, preis formal falsch",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/update",
+			"time": 30,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				30
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "06c7629c-82d4-4e22-9c32-885ea3ba8d9e",
+			"name": "3.16 Clothing ändern, designerUUID formal falsch",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/update",
+			"time": 27,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				27
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "9ef2638f-4255-41ac-bea6-bfb481fc54b8",
+			"name": "3.17 Clothing ändern, clothingUUID formal falsch",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/update",
+			"time": 7,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "0a3987cd-be5b-4ac7-b807-0f5a4530ee41",
+			"name": "3.18 Clothing löschen, clothingUUID formal falsch",
+			"url": "http://localhost:8080/brand_manager_war_exploded/resource/clothing/delete?uuid=b694ac5f-06Xf-48ba-8b5f-a3249cf46d5c",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				6
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1556,
+	"collection": {
+		"requests": [
+			{
+				"id": "b59eea92-4141-42c1-a0ff-df0cf2330aff",
+				"method": "GET"
+			},
+			{
+				"id": "4cbe1df5-fea5-4b71-85c8-0d1150e3cac9",
+				"method": "GET"
+			},
+			{
+				"id": "8310df65-8b28-4f10-8844-1f106fabd814",
+				"method": "POST"
+			},
+			{
+				"id": "8aecf89d-16e4-4928-b3c5-e1c9bcbd5ef7",
+				"method": "PUT"
+			},
+			{
+				"id": "fdb37341-35fb-4905-8e8f-13433a1a8938",
+				"method": "DELETE"
+			},
+			{
+				"id": "3b67b83c-41e1-47a2-b757-c085d0b2091c",
+				"method": "GET"
+			},
+			{
+				"id": "e659558a-b59c-4a52-a763-ec0f20198282",
+				"method": "POST"
+			},
+			{
+				"id": "28af5de9-1d1a-4c77-8352-314c0f142fb0",
+				"method": "POST"
+			},
+			{
+				"id": "2c72ff4a-f973-418d-8126-6a16d1df55f9",
+				"method": "POST"
+			},
+			{
+				"id": "44ee9674-c096-4d53-b571-ec5a626c9bb9",
+				"method": "POST"
+			},
+			{
+				"id": "dffec12a-6797-4afb-be5d-7baad1bfa490",
+				"method": "POST"
+			},
+			{
+				"id": "0a93afbf-9225-46aa-8279-90dd30758f2d",
+				"method": "POST"
+			},
+			{
+				"id": "263e4b7d-15bd-413d-8105-75a66a107d1a",
+				"method": "POST"
+			},
+			{
+				"id": "59f2f45a-c365-4100-bcb5-629cf4fa0204",
+				"method": "POST"
+			},
+			{
+				"id": "33f1d0f5-8894-4fce-8588-658190fc4bc5",
+				"method": "POST"
+			},
+			{
+				"id": "e3f7522f-27b9-44aa-ae87-0b80d2226cb5",
+				"method": "POST"
+			},
+			{
+				"id": "4c2923d0-a8c6-4eef-84c3-f1108330d98c",
+				"method": "PUT"
+			},
+			{
+				"id": "e7fa0928-4144-4303-a8e5-2b0e3a2b3e45",
+				"method": "PUT"
+			},
+			{
+				"id": "2709e053-8019-4257-8089-28c77970b1a5",
+				"method": "PUT"
+			},
+			{
+				"id": "acf72722-0a2a-4a18-adda-852b46166fe0",
+				"method": "PUT"
+			},
+			{
+				"id": "e80d2290-61ad-4842-94c6-18face63d10e",
+				"method": "PUT"
+			},
+			{
+				"id": "1428a1d9-d3d0-4a75-9e9b-e61e2702cd2a",
+				"method": "PUT"
+			},
+			{
+				"id": "71a9804b-da4e-48df-9a1a-aa86aef3e756",
+				"method": "PUT"
+			},
+			{
+				"id": "06c7629c-82d4-4e22-9c32-885ea3ba8d9e",
+				"method": "PUT"
+			},
+			{
+				"id": "9ef2638f-4255-41ac-bea6-bfb481fc54b8",
+				"method": "PUT"
+			},
+			{
+				"id": "0a3987cd-be5b-4ac7-b807-0f5a4530ee41",
+				"method": "DELETE"
+			}
+		]
+	}
+}
